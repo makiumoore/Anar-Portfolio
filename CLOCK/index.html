@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Digital Clock</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .glowing-text {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(101, 126, 10, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(255, 0, 140, 0.8);
+            }
+        }
+    </style>
+</head>
+<body class="bg-red-800 text-white h-screen flex justify-center items-center">
+    <div class="text-4xl font-bold">
+        <div id="clock" class="text-6xl font-bold glowing-text">
+            00:00:00
+        </div>
+        <h1 class="justify-center align-center flex glowing-text">Clock</h1>
+        
+    </div>
+    <a href="/index.html"><h1 style="position: absolute; top: 30px; left: 30px; font-size: 24px;">Back</h1></a>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+    
+        setInterval(updateClock, 1000);
+    
+        updateClock();
+    </script>
+    
+</body>
+</html>
